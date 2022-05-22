@@ -1,0 +1,639 @@
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+}
+@media only screen and (max-width: 480px) {
+  .header__nav {
+    max-width: 480px;
+    display: flex;
+    position: relative;
+    border-bottom: 0px;
+    z-index: 2;
+    .header__menu {
+      margin: 5px 0 20px 0;
+      text-transform: uppercase;
+      position: absolute;
+      width: 100%;
+    }
+    .burger {
+      z-index: 1;
+      padding: 10px;
+      display: inline-block;
+      cursor: pointer;
+      background-color: transparent;
+      border: 0;
+      margin: 0;
+      transition: transform 0.3s 0.1s ease-in-out;
+      position: absolute;
+      right: 20px;
+      .burger__box {
+        width: 40px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+
+        @mixin burger-line {
+          width: 100%;
+          height: 3px;
+          background-color: #000;
+          position: absolute;
+          left: 0;
+        }
+        .burger__inner {
+          @include burger-line;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: background-color 0.3s 0.1s ease-in-out;
+        }
+        .burger__inner::before,
+        .burger__inner::after {
+          content: "";
+          @include burger-line;
+          transition: transform 0.5s 0.1s ease-in-out;
+        }
+        .burger__inner::before {
+          top: -10px;
+        }
+        .burger__inner::after {
+          top: 10px;
+        }
+      }
+    }
+
+    .burger--active {
+      .burger__inner {
+        //transform: translatex(250px);
+        background-color: transparent !important;
+      }
+
+      .burger__inner::before {
+        transform: translateY(10px) rotate(45deg);
+      }
+
+      .burger__inner::after {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+
+    .menu__outer {
+      list-style: none;
+      flex-direction: column;
+      transform: translateY(-120px);
+      transition: transform 0.3s 0.1s ease-in-out;
+      display: inline-block;
+      position: relative;
+      border-bottom: 1px solid #000;
+      width: 100%;
+      background-color: #fff;
+      .menu__item {
+        text-transform: uppercase;
+        letter-spacing: 0.175em;
+        display: flex;
+        position: relative;
+        margin-left: 20px;
+        a {
+          font-family: "Madera", "arial", sans-serif;
+          text-decoration: none;
+          color: #000;
+          margin: 5px 0;
+          margin-right: 10px;
+        }
+      }
+    }
+    .menu--active {
+      transform: translateY(0px);
+      .menu__outer {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+.hero {
+  background-image: url("../assets/wine1.jpg");
+  background-size: cover;
+  background-position: 0;
+  height: 300px;
+
+  h2 {
+    font-size: 40px;
+    padding-top: 46px;
+    line-height: 1.1149425287;
+    font-family: "Shadows Into Light", cursive;
+    text-align: center;
+  }
+}
+.glass {
+  color: #000;
+  background-color: #cdb1d1;
+  position: relative;
+  .glass__title {
+    font-size: 40px;
+    font-family: "Shadows Into Light", cursive;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .glass__glass {
+    position: relative;
+    svg {
+      width: 80px;
+      margin: auto calc(50vw - 40px);
+    }
+  }
+  .glass__point {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 20px;
+    color: #fff;
+    .glass__step-1,
+    .glass__step-2,
+    .glass__step-3 {
+      text-align: center;
+      margin-bottom: 0px;
+    }
+  }
+  .glass__view,
+  .glass__smell,
+  .glass__taste {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+.type {
+  display: flex;
+  flex-direction: column;
+  .type__slider {
+    .type__info-1 {
+      background-color: #f0f9dd;
+      font-family: "Shadows Into Light", cursive;
+      padding: 20px;
+    }
+
+    .type__info-2 {
+      background-color: #e5977f;
+      font-family: "Shadows Into Light", cursive;
+      padding: 20px;
+    }
+
+    .type__info-3 {
+      background-color: #fef7ec;
+      font-family: "Shadows Into Light", cursive;
+      padding: 20px;
+    }
+
+    .type__white,
+    .type__red,
+    .type__mus {
+      img {
+        width: 150px;
+        margin: 0 calc(50vw - 75px);
+      }
+    }
+  }
+}
+.contact {
+  background-color: #ebeac5;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+
+  .contact__head {
+    font-size: 20px;
+    padding: 10px 0;
+    line-height: 1.1149425287;
+    font-family: "Shadows Into Light", cursive;
+    text-align: center;
+    margin: 30px 0;
+  }
+  .contact__name {
+    font-family: "Madera", "arial", sans-serif;
+  }
+  .contact__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .contact__name {
+      font-size: 13px;
+      border-right: 1px solid #000;
+      width: 50vw;
+      text-align: right;
+      p {
+        padding: 5px 20px;
+      }
+    }
+    .contact__data {
+      font-size: 13px;
+      width: 50vw;
+
+      p {
+        padding: 5px 20px;
+      }
+    }
+  }
+  .contact__video {
+    height: auto;
+    width: 80vw;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 10vw;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .header__nav {
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid #000;
+    .header__menu {
+      margin-left: auto;
+      text-transform: uppercase;
+      .menu__outer {
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        .menu__item {
+          text-transform: uppercase;
+          letter-spacing: 0.175em;
+          display: flex;
+          position: relative;
+          a {
+            font-family: "Madera", "arial", sans-serif;
+            text-decoration: none;
+            color: #000;
+            margin: 5px 0;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  .hero {
+    background-image: url("../assets/wine1.jpg");
+    background-size: cover;
+    background-position: 0;
+    height: 300px;
+
+    h2 {
+      font-size: 40px;
+      padding-top: 46px;
+      line-height: 1.1149425287;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+    }
+  }
+  .glass {
+    color: #000;
+    background-color: #cdb1d1;
+    position: relative;
+    .glass__title {
+      font-size: 40px;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      width: 100%;
+      padding-top: 20px;
+    }
+    .glass__glass {
+      position: relative;
+      svg {
+        width: 80px;
+        margin: auto calc(50vw - 40px);
+      }
+    }
+
+    .glass__point {
+      font-family: "Shadows Into Light", cursive;
+      font-size: 20px;
+      color: #fff;
+
+      .glass__step-1,
+      .glass__step-2,
+      .glass__step-3 {
+        text-align: center;
+      }
+
+      .glass__view,
+      .glass__smell,
+      .glass__taste {
+        font-family: "Shadows Into Light", cursive;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+      }
+    }
+  }
+  .type {
+    display: flex;
+    flex-direction: column;
+    .type__slider {
+      display: flex;
+      flex-direction: row;
+
+      .type__info-1 {
+        background-color: #f0f9dd;
+      }
+
+      .type__info-2 {
+        background-color: #e5977f;
+      }
+
+      .type__info-3 {
+        background-color: #fef7ec;
+      }
+
+      .type__white,
+      .type__red,
+      .type__mus {
+        display: flex;
+        align-items: center;
+        img {
+          width: 20vw;
+          margin: 0;
+        }
+      }
+    }
+  }
+  .contact {
+    background-color: #ebeac5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .contact__head {
+      font-size: 38px;
+      padding: 25px 0;
+      line-height: 1.1149425287;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+    }
+    .contact__name {
+      font-family: "Madera", "arial", sans-serif;
+    }
+    .contact__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .contact__name {
+        font-size: 20px;
+        border-right: 1px solid #000;
+        width: 50vw;
+        text-align: right;
+        p {
+          padding: 5px 20px;
+        }
+      }
+      .contact__data {
+        font-size: 20px;
+        width: 50vw;
+
+        p {
+          padding: 5px 20px;
+        }
+      }
+    }
+    .contact__video {
+      height: 50vh;
+      align-items: center;
+      margin-top: 30px;
+    }
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .header__nav {
+    display: flex;
+    width: 100%;
+
+    position: relative;
+    border-bottom: 1px solid #000;
+    .header__menu {
+      margin-left: auto;
+      text-transform: uppercase;
+      .menu__outer {
+        display: flex;
+        width: 100%;
+        list-style: none;
+        flex-direction: row;
+        .menu__item {
+          text-transform: uppercase;
+          letter-spacing: 0.175em;
+          display: flex;
+          position: relative;
+          transition: color 300ms;
+          margin-right: 8rem;
+          a {
+            font-family: "Madera", "arial", sans-serif;
+            text-decoration: none;
+            color: #000;
+            margin: 25px 0;
+          }
+        }
+      }
+    }
+  }
+  .hero {
+    background-image: url("../assets/wine1.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: 0;
+    h2 {
+      font-size: 70px;
+      padding-top: 70px;
+      line-height: 1.1;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+    }
+    video {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
+  .glass {
+    color: #000;
+    background-color: #cdb1d1;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .glass__title {
+      font-size: 60px;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      margin: 35px 0;
+    }
+    .glass__glass {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      overflow: hidden;
+      svg {
+        margin-left: 10vw;
+      }
+    }
+    .glass__points {
+      color: #fff;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .glass__step-1,
+      .glass__step-2,
+      .glass__step-3 {
+        margin-bottom: 30px;
+        font-family: "Shadows Into Light", cursive;
+        font-size: 30px;
+      }
+      p {
+        font-family: "Shadows Into Light", cursive;
+        font-size: 25px;
+      }
+    }
+  }
+  .type {
+    .type__slider {
+      z-index: 1;
+      background-color: #fff;
+      display: flex;
+      font-family: "Shadows Into Light", cursive;
+      height: 100vh;
+
+      .type__info-1 {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 100vh;
+        background-color: #f0f9dd;
+        p {
+          font-size: 20px;
+          opacity: 0;
+          top: 100px;
+          width: 50vw;
+          padding: 50px;
+        }
+        h2 {
+          opacity: 0;
+          font-size: 45px;
+          left: 0;
+          right: 50vw;
+          margin: 40px auto;
+        }
+      }
+      .type__info-2 {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #f0f9dd;
+
+        p {
+          font-size: 20px;
+          opacity: 0;
+          top: 100px;
+          width: 50vw;
+          padding: 50px;
+        }
+        h2 {
+          // position:absolute;
+          opacity: 0;
+          font-size: 45px;
+          left: 0;
+          right: 50vw;
+          margin: 40px auto;
+        }
+      }
+
+      .type__info-3 {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #e69e85;
+
+        p {
+          font-size: 20px;
+          opacity: 0;
+          top: 100px;
+          width: 50vw;
+          padding: 50px;
+        }
+        h2 {
+          // position:absolute;
+          opacity: 0;
+          font-size: 45px;
+          left: 0;
+          right: 50vw;
+          margin: 40px auto;
+        }
+      }
+
+      .type__white,
+      .type__red,
+      .type__mus {
+        background-color: #fff;
+        width: 50vw;
+        z-index: 1;
+        img {
+          height: 100vh;
+          width: auto;
+          position: absolute;
+        }
+      }
+    }
+  }
+  .contact {
+    background-color: #ebeac5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .contact__head {
+      font-size: 70px;
+      padding: 70px 0;
+      line-height: 1.1149425287;
+      font-family: "Shadows Into Light", cursive;
+      text-align: center;
+    }
+    .contact__name {
+      font-family: "Madera", "arial", sans-serif;
+    }
+    .contact__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .contact__name {
+        font-size: 20px;
+        border-right: 1px solid #000;
+        width: 50vw;
+        text-align: right;
+        p {
+          padding: 5px 20px;
+        }
+      }
+      .contact__data {
+        font-size: 20px;
+        width: 50vw;
+
+        p {
+          padding: 5px 20px;
+        }
+      }
+    }
+    .contact__video {
+      height: 50vh;
+      align-items: center;
+      margin-top: 30px;
+    }
+    // .contact__mail, .contact__tel{}
+  }
+}
